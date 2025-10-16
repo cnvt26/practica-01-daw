@@ -35,3 +35,46 @@ Dado que la IP pública dinámica de una instancia EC2 cambia al reiniciarse, se
 
 2. La IP elástica se asoció a la instancia EC2 recién creada.
 ![Asociación de la IP elástica a la instancia](images/image-8.png)
+
+## 2. Instalación de la pila LAMP
+
+El script **install_lamp.sh** automatiza los siguientes pasos: actualización del sistema, e instalación de Apache, MariaDB y PHP con las extensiones necesarias.
+
+### 2.1. Sistema base: actualización
+
+<u>Comandos Clave:</u> *sudo apt update* && *sudo apt upgrade -y*
+
+Este es siempre el primer paso en cualquier sistema operativo basado en Debian/Ubuntu.
+
+**sudo apt update** actualiza la lista de paquetes disponibles, consultando los repositorios en internet.
+
+**sudo apt upgrade -y** instala las nuevas versiones de todos los paquetes ya instalados en el sistema. El flag **-y** (yes) acepta automáticamente todas las peticiones de instalación o actualización. Esto garantiza que el sistema operativo esté al día antes de instalar nuevo software.
+
+### 2.2. Servidor Web: Apache
+
+<u>Comando Clave:</u> *sudo apt install apache2 -y*
+
+Este comando instala el servidor web Apache2. Apache es el software responsable de escuchar peticiones HTTP (p. ej., cuando alguien escribe tu dirección IP o dominio en su navegador) y servir los archivos de tu sitio web (HTML, CSS, imágenes, etc.) en respuesta.
+
+### 2.3. Base de Datos: MariaDB
+
+<u>Comandos Clave:</u> *sudo apt install mariadb-server -y*
+
+MariaDB es un sistema de gestión de bases de datos relacionales (RDBMS), una bifurcación popular de MySQL. Este comando instala el servidor de bases de datos. Su función es almacenar, organizar y recuperar los datos de sitios dinámicos, como usuarios, publicaciones de blog o inventarios.
+
+### 2.4. Lenguaje de Procesamiento: PHP
+
+<u>Comandos Clave:</u> *sudo apt install php libapache2-mod-php php-mysql -y*
+
+PHP es el lenguaje de programación del lado del servidor que permite la creación de contenido dinámico (p. ej., si tienes un WordPress, un foro o un carrito de compras).
+
+**sudo apt install php** instala el intérprete principal de PHP.
+
+**libapache2-mod-php** instala el módulo que integra PHP con Apache, permitiendo que el servidor web pase los archivos .php a este intérprete para su procesamiento.
+
+**php-mysql** instala la extensión o módulo de PHP que le permite comunicarse y gestionar las bases de datos MariaDB/MySQL.
+
+### 2.5. Comprobación de acceso a la IP elástica.
+
+Si busco la IP elástica en mi navegador, podemos ver que funciona correctamente.
+![Comprobación de acceso](images/image-9.png)
